@@ -37,12 +37,10 @@
 
         <a-scene
             vr-mode-ui="enabled: false;"
-            loading-screen="enabled: true;"
             renderer="logarithmicDepthBuffer: true;"
             arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
             id="scene"
             embedded
-            gesture-detector
         >
             <a-assets>
                 <a-asset-item
@@ -64,8 +62,6 @@
                         scale="6.26932207880976 6.26932207880976 6.26932207880976"
                         animation-mixer="loop: none"
                         gltf-model="#animated-asset"
-                        class="clickable"
-                        gesture-handler
                 ></a-entity>
 
             </a-nft>
