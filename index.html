@@ -36,15 +36,30 @@
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
 <script>
-    function verifyMarker() {
-        if(document.querySelector("a-marker").object3D.visible == true) {
-            console.log("ACHOU");
-        } else {
-            console.log("PERDER");
-        }
-    }
+    window.addEventListener('load', () => {
+        const camera = document.querySelector('[camera]');
+        const marker = document.querySelector('a-marker');
+        let check;
 
-    setInterval(verifyMarker(), 1000);
+        marker.addEventListener('markerFound', () => {
+            let cameraPosition = camera.object3D.position;
+            let markerPosition = marker.object3D.position;
+            let distance = cameraPosition.distanceTo(markerPosition)
+
+            check = setInterval(() => {
+                cameraPosition = camera.object3D.position;
+                markerPosition = marker.object3D.position;
+                distance = cameraPosition.distanceTo(markerPosition)
+
+                // do what you want with the distance:
+                console.log(distance);
+            }, 100);
+        });
+
+        marker.addEventListener('markerLost', () => {
+            clearInterval(check);
+        })
+    });
 </script>
 
 <body style='margin : 0px; overflow: hidden;'>
