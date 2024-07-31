@@ -42,7 +42,7 @@
         let check;
 
         marker.addEventListener('markerFound', () => {
-            let cameraPosition = camera.object3D.position;
+            /*let cameraPosition = camera.object3D.position;
             let markerPosition = marker.object3D.position;
             let distance = cameraPosition.distanceTo(markerPosition)
 
@@ -53,11 +53,11 @@
 
                 // do what you want with the distance:
                 console.log(distance);
-            }, 100);
+            }, 100);*/
         });
 
         marker.addEventListener('markerLost', () => {
-            clearInterval(check);
+            marker.object3D.visible = true;
         })
     });
 </script>
