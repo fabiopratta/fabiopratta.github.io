@@ -51,7 +51,12 @@
         <a-asset-item id="animated-asset" src="assets/modelstc.glb"></a-asset-item>
     </a-assets>
 
-    <a-marker id="animated-marker" ref="animated-marker" type='barcode' value='6' >
+    <a-marker id="animated-marker" ref="animated-marker" type='barcode' value='6'
+              smooth="true"
+              smoothCount="15"
+              smoothTolerance=".05"
+              smoothThreshold="15"
+    >
         <a-entity
                 gltf-model="#animated-asset"
                 scale="15 15 15"
