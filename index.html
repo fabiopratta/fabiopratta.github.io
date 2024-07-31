@@ -36,16 +36,15 @@
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
 <script>
-    AFRAME.registerComponent('registerevents', {
-        init: function () {
-            var marker = this.el;
-            marker.addEventListener('markerFound', function () {
-                var markerId = marker.id;
-                console.log('! markerFound', markerId);
-                object_found(markerId);
-            });
+    function verifyMarker() {
+        if(document.querySelector("a-marker").object3D.visible == true) {
+            console.log("ACHOU");
+        } else {
+            console.log("PERDER");
         }
-    });
+    }
+
+    setInterval(verifyMarker(), 1000);
 </script>
 
 <body style='margin : 0px; overflow: hidden;'>
