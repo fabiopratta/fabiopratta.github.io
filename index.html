@@ -45,12 +45,17 @@
         embedded
         arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'
         id="scene"
+        light="defaultLightsEnabled: false"
 >
     <a-assets>
         <a-asset-item id="animated-asset" src="assets/model/ILHA_COM_LUZ/ILHA_model.gltf"></a-asset-item>
     </a-assets>
 
     <a-marker id="animated-marker" ref="animated-marker" type='barcode' value='6'
+              smooth="true"
+              smoothCount="10"
+              smoothTolerance=".01"
+              smoothThreshold="5"
     >
         <a-entity
                 gltf-model="#animated-asset"
