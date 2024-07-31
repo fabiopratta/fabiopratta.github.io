@@ -35,6 +35,20 @@
 <!-- add this script in order to load a large set of 3D model extensions-->
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
+<script>
+    function verifyMarker() {
+        //var amarker = this.$refs.amarker; // vuejs
+        var amarker = document.querySelector("#animated-marker")
+        if(amarker.object3D.visible == true) {
+            console.log('marker is visible');
+        }
+        else {
+            console.log('marker is lost');
+        }
+    }
+
+    setInterval(verifyMarker(), 1000);
+</script>
 
 <body style='margin : 0px; overflow: hidden;'>
 <!--<div class="arjs-loader">
@@ -53,17 +67,17 @@
         <a-asset-item id="animated-asset" src="assets/modelstc.glb"></a-asset-item>
     </a-assets>
 
-    <a-marker id="animated-marker" type='barcode' value='6' raycaster="objects: .clickable"
+    <a-marker id="animated-marker" ref="animated-marker" type='barcode' value='6' raycaster="objects: .clickable"
               emitevents="true"
               cursor="fuse: false; rayOrigin: mouse;">
         <a-entity
                 gltf-model="#animated-asset"
                 scale="15 15 15"
                 class="clickable"
-                gesture-handler="minScale: 5; maxScale: 30">
+                gesture-handler="minScale: 5; maxScale: 15">
         </a-entity>
     </a-marker>
-    
+
     <a-entity camera></a-entity>
 </a-scene>
 </body>
