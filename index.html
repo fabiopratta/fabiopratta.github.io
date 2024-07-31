@@ -36,18 +36,16 @@
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
 <script>
-    function verifyMarker() {
-        //var amarker = this.$refs.amarker; // vuejs
-        var amarker = document.querySelector("#animated-marker")
-        if(amarker.object3D.visible == true) {
-            console.log('marker is visible');
+    AFRAME.registerComponent('registerevents', {
+        init: function () {
+            var marker = this.el;
+            marker.addEventListener('markerFound', function () {
+                var markerId = marker.id;
+                console.log('! markerFound', markerId);
+                object_found(markerId);
+            });
         }
-        else {
-            console.log('marker is lost');
-        }
-    }
-
-    setInterval(verifyMarker(), 1000);
+    });
 </script>
 
 <body style='margin : 0px; overflow: hidden;'>
